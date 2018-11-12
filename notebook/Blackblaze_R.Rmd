@@ -1,0 +1,22 @@
+```{r}
+# Loading libraries
+library(survival)
+library(ranger)
+library(ggplot2)
+library(dplyr)
+library(ggfortify)
+library(survminer)
+```
+
+```{r}
+# Loading data
+df <- read.csv('../data/drive_survival_prepared_2.csv')
+head(df)
+```
+```{r}
+# Cox regression
+cox <- coxph(Surv(maxhours, failed) ~ manufacturer + capacity, data = df)
+```
+```{r}
+summary(cox)
+```
